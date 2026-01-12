@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bur7c3ty77l31"
+path="res://.godot/imported/Third Scene - Stomach 2026-01-08 2032.mp3-ad225da0597e9d62228bf811bce230b2.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Third Scene - Stomach 2026-01-08 2032.mp3"
+dest_files=["res://.godot/imported/Third Scene - Stomach 2026-01-08 2032.mp3-ad225da0597e9d62228bf811bce230b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8nxbogdeep35"]
+
+[ext_resource type="Texture2D" uid="uid://ctr0nfrhyinjh" path="res://Art/EndScreen.png" id="1_226gh"]
+[ext_resource type="Script" uid="uid://cacijc38nstvd" path="res://Screens/end_screen.gd" id="1_vf13v"]
+[ext_resource type="AudioStream" uid="uid://dh3ijsb3d0p06" path="res://Audio/SoundEffects/dyingsoundmusic.wav" id="2_wo0ek"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vf13v"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vf13v")
+background_music = ExtResource("2_wo0ek")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_226gh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -293.0
+offset_right = -108.0
+offset_bottom = 50.0
+grow_horizontal = 0
+text = "You Won :)"
+label_settings = SubResource("LabelSettings_vf13v")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -84.0
+offset_right = 197.0
+offset_bottom = -53.0
+grow_vertical = 0
+text = "< Back To Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_replay_pressed"]
