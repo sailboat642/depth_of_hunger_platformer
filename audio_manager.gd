@@ -9,27 +9,23 @@ var sounds = {
 	"character_dying": "res://Audio/SoundEffects/dyingsoundmusic.wav", # lose game sound
 	"rumbling": "res://Audio/SoundEffects/rumblesound.wav", # this will be played to signify rise and fall of acid, the humans belly rumbling, like a roar
 	"slurp": "res://Audio/SoundEffects/slurp.wav", # musquito sucking (for potential lock and key mechanic of mosquito)
-	"vines_reseading": "", # for gate opening
-	"collecting_objective": "", # pickup key object
-	"collecting_resource": "", # pickup object
+	"vines_receading": "res://Audio/SoundEffects/pickupitem.wav",
+	"vines_parting": "res://Audio/SoundEffects/vinesparting.wav", # for gate opening
+	"collecting_objective": "res://Audio/SoundEffects/pickupkeyitem.wav", # pickup key object
+	"collecting_resource": "res://Audio/SoundEffects/menu_sound_effects_-_all_sounds/beep.wav", # pickup object
 	"splashing_of_platform": "res://Audio/SoundEffects/watersplashing.wav", # for floating objects, gentle splashing when character lands
 	#ui
 	"hover": "res://Audio/SoundEffects/menu_sound_effects_-_all_sounds/SoundMenuMove.wav",
 	"select": "res://Audio/SoundEffects/menu_sound_effects_-_all_sounds/SoundMessageWarning.wav",
 	
 	# narrative
-	"air_rushing": "", # while the mosquito is falling from 
+	"air_rushing": "res://Audio/SoundEffects/windrushing.wav", # while the mosquito is falling from 
 	"thud": "", # strong landing, cinematic
-	"weak_landing": "", # crunchy, foot step on snow, crumbling  paper
+	"weak_landing": "res://Audio/SoundEffects/softlanding.wav", # crunchy, foot step on snow, crumbling  paper
 	"munching_sound": "", #  like a landslide, make it comical
-	"flushing": "",
-	"level_complete": "", # holy aura like
-	"loud_click": "", # flipping of switch or finger snap
-	
-	# music
-	"title_music_track": "",
-	"": "",
-	
+	"flushing": "res://Audio/SoundEffects/toilet.wav",
+	"level_complete": "res://Audio/SoundEffects/LEVELCOMPLETE.wav", # holy aura like
+	"loud_click": "res://Audio/SoundEffects/fingersnapsound.mp3", # flipping of switch or finger snap
 }
 
 @onready var music_player = AudioStreamPlayer.new()

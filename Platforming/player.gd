@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var friction = 1000.0
 @export var jump_velocity = -450.0
 
+@export var armour_health = 8
+
 # Get the gravity from project settings to keep it consistent
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -54,3 +56,12 @@ func update_animations():
 		anim_player.play("walk")
 	else:
 		anim_player.play("idle")
+		
+		
+# Heatlh logic
+func apply_damage_to_player(damage_amount: int):
+	armour_health -= damage_amount
+	if (armour_health <= 0):
+		AudioManager.play_sfx("character_dying")
+		get_tree().change_scene_to_file("res://lose_screen.tscn")
+	

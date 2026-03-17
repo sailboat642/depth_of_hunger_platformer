@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.tmp/
+export_presets.cfg
+import/
+
+# General ignores
+*.log
+*.tmp
+
+# Windows-specific
+Thumbs.db
+desktop.ini
