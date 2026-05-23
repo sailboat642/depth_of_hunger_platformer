@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://csiqpnn807ubx"]
+[gd_scene format=4 uid="uid://csiqpnn807ubx"]
 
 [ext_resource type="Texture2D" uid="uid://b5s3v80bqb4gk" path="res://Art/tilemap_basic.png" id="1_cmw8w"]
 

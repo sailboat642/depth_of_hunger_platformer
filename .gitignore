@@ -1,0 +1,30 @@
+LinuxBuilds/
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+*.translations
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# OS-specific ignores (commonly found)
+.DS_Store
+Thumbs.db 
+ehthumbs.db
+Desktop.ini 
+$RECYCLE.BIN/
+*.nfs
+
+.godot/
+*.import 
