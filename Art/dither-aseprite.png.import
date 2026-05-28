@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://85r4mm2ifg4q"
-path="res://.godot/imported/MC idle.png-4207172165335f7de81676ccb9c23f84.ctex"
+uid="uid://b5n8ep0a2u18n"
+path="res://.godot/imported/dither-aseprite.png-2fd18a000b8998dab7a6dda8a1581367.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/PlayerAnimations/MC idle.png"
-dest_files=["res://.godot/imported/MC idle.png-4207172165335f7de81676ccb9c23f84.ctex"]
+source_file="res://Art/dither-aseprite.png"
+dest_files=["res://.godot/imported/dither-aseprite.png-2fd18a000b8998dab7a6dda8a1581367.ctex"]
 
 [params]
 

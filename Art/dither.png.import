@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7wcleppukkhi"
-path="res://.godot/imported/Jump.png-f41fc49998bb14e585110ee44f24c009.ctex"
+uid="uid://caa4xdn0s16xr"
+path="res://.godot/imported/dither.png-84d919f1f0272a497c849c8803a2632f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/PlayerAnimations/Jump.png"
-dest_files=["res://.godot/imported/Jump.png-f41fc49998bb14e585110ee44f24c009.ctex"]
+source_file="res://Art/dither.png"
+dest_files=["res://.godot/imported/dither.png-84d919f1f0272a497c849c8803a2632f.ctex"]
 
 [params]
 
