@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3ablvjiyyvd5"]
+
+[ext_resource type="Script" uid="uid://ctumlubydtxuy" path="res://Screens/title_screen.gd" id="1_v6p8y"]
+[ext_resource type="AudioStream" uid="uid://dxrdi3gjwxdys" path="res://Audio/Music/intense.mp3" id="2_28co4"]
+[ext_resource type="Texture2D" uid="uid://hydpvdccuccn" path="res://Art/TitleScreenBackground.png" id="2_ak2if"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig5kc"]
+font_size = 66
+font_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6p8y")
+background_music = ExtResource("2_28co4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ak2if")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "The Depth of Hunger"
+label_settings = SubResource("LabelSettings_ig5kc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

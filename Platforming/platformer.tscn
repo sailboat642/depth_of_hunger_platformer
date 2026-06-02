@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://csiqpnn807ubx"]
+
+[ext_resource type="Script" uid="uid://cs16c126vyj77" path="res://Platforming/platformer.gd" id="1_k1ntv"]
+[ext_resource type="AudioStream" uid="uid://d3m32kc4s8yej" path="res://Audio/Music/morechill2.wav" id="2_ftcjt"]
+[ext_resource type="PackedScene" uid="uid://2unys2xettuh" path="res://player.tscn" id="2_or1io"]
+[ext_resource type="Texture2D" uid="uid://b5n8ep0a2u18n" path="res://Art/dither-aseprite.png" id="3_dxidq"]
+[ext_resource type="TileSet" uid="uid://b8x0dqdpg0y3c" path="res://new_tile_set.tres" id="3_n3w6o"]
+
+[sub_resource type="Shader" id="Shader_dxidq"]
+code = "// BackBufferCopy is supposed to make texture accessible as variables
+shader_type canvas_item;
+//render_mode unshaded;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+// This matches exactly what Godot 4 expects for the screen texture uniform
+uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
+
+void fragment() {
+	vec4 c = textureLod(screen_texture, SCREEN_UV, 0.0);
+	COLOR = vec4(1.0 - c.rgb, c.a);
+}
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjepe"]
+shader = SubResource("Shader_dxidq")
+
+[node name="Platformer" type="Node2D" unique_id=754682552]
+script = ExtResource("1_k1ntv")
+music = ExtResource("2_ftcjt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=542395825]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -950.0
+offset_top = -822.0
+offset_right = -378.0
+offset_bottom = -574.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dxidq")
+stretch_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=647544627]
+tile_map_data = PackedByteArray("AADY//f/AAAZAAIAAADY//j/AAAZAAMAAADY//n/AAAZAAQAAADY//r/AAAZAAUAAADZ//f/AAAaAAIAAADZ//j/AAAaAAMAAADZ//n/AAAaAAQAAADZ//r/AAAaAAUAAADZ//v/AAAaAAYAAADZ//z/AAAaAAcAAADa//f/AAAbAAIAAADa//j/AAAbAAMAAADa//n/AAAbAAQAAADa//r/AAAbAAUAAADa//v/AAAbAAYAAADh/+7/AAAYAAkAAADh/+//AAAYAAoAAADh//D/AAAYAAsAAADh//H/AAAYAAwAAADi/+7/AAAZAAkAAADi/+//AAAZAAoAAADi//D/AAAZAAsAAADi//H/AAAZAAwAAADj/+7/AAAaAAkAAADj/+//AAAaAAoAAADj//D/AAAaAAsAAADj//H/AAAaAAwAAADk/+7/AAAbAAkAAADk/+//AAAbAAoAAADU//H/AAATAAgAAADV//D/AAAUAAcAAADV//H/AAAUAAgAAADW//D/AAAVAAcAAADW//H/AAAVAAgAAADX//H/AAAWAAgAAAA=")
+tile_set = ExtResource("3_n3w6o")
+
+[node name="Player" parent="." unique_id=753154020 instance=ExtResource("2_or1io")]
+position = Vector2(-1230, -583)
+floor_constant_speed = true
+floor_max_angle = 1.2426745
+floor_snap_length = 7.8
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1111399234]
+visible = false
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=754442757]
+z_index = 1
+material = SubResource("ShaderMaterial_bjepe")
+offset_left = -1998.0
+offset_top = -513.0
+offset_right = -741.0
+offset_bottom = -17.0
+
+[node name="OnlyWalls" type="TileMapLayer" parent="." unique_id=1358669188]
+z_index = 2
+position = Vector2(0, -2)
+tile_map_data = PackedByteArray("AADT//X/AAABAA4AAADU//T/AAAHAAoAAADU//X/AAACAA4AAADV//T/AAAHAAoAAADV//X/AAAEAAoAAADV//b/AAABAAsAAADV//f/AAABAAsAAADV//j/AAABAA4AAADW//T/AAAHAAoAAADW//X/AAAHAAoAAADW//b/AAAHAAoAAADW//f/AAAHAAoAAADW//j/AAAOAA4AAADX//T/AAACAAoAAADX//X/AAACAAsAAADX//b/AAACAAsAAADX//f/AAACAAwAAADX//j/AAAOAA4AAADY//T/AAADAAoAAADZ//T/AAADAAoAAADb//T/AAAEAAoAAADb//X/AAAEAAsAAADb//b/AAAEAAsAAADb//f/AAAEAAwAAADc//b/AAACAAoAAADc//f/AAALAAoAAADf//P/AAAWAAsAAADf//T/AAACAAoAAADg//P/AAAXAA0AAADg//T/AAAXAA4AAADf/+7/AAASAAkAAADS/+7/AAAHAAkAAADT/+7/AAAHAAkAAADU/+7/AAAHAAkAAADV/+7/AAAHAAkAAADW/+7/AAAHAAkAAADQ/+7/AAABAAkAAADQ/+//AAABAAoAAADR/+7/AAAHAAkAAADQ//D/AAABAAoAAADQ//H/AAABAA4AAADR//H/AAAEAAoAAADR//L/AAABAA4AAADS//L/AAAEAAoAAADS//P/AAABAAsAAADS//T/AAABAA4AAADT//T/AAAEAAoAAADT//L/AAACAAwAAADU//L/AAATAAkAAADV//L/AAAUAAkAAADW//L/AAAVAAkAAADX//L/AAAWAAkAAADY//L/AAADAAkAAADZ//L/AAADAAkAAADa//L/AAAEAAkAAADS/+//AAAHAAoAAADT/+//AAACAAoAAADU/+//AAAQAA4AAADV/+//AAAQAA4AAADW/+//AAAQAA4AAADX/+//AAAQAA4AAADS//D/AAAHAAoAAADY/+//AAAXAA4AAADT//D/AAAXAA0AAADT//H/AAACAAsAAADY/+7/AAALAAkAAADX/+7/AAAHAAkAAADb//L/AAAQAAsAAADc//H/AAARAAoAAADb//H/AAAQAAoAAADc//L/AAARAAsAAADb//P/AAASAAsAAADc//P/AAATAAsAAADd//P/AAAUAAsAAADe//P/AAAVAAsAAADd//X/AAAVAA0AAADd//b/AAAVAA4AAADe//X/AAAWAA0AAADe//b/AAAWAA4AAADf//X/AAAXAA0AAADf//b/AAAXAA4AAADC//b/AAAPAAIAAADC//f/AAAPAAMAAADD//b/AAAQAAIAAADD//f/AAAQAAMAAADE//X/AAARAAEAAADE//b/AAARAAIAAADE//f/AAARAAMAAADF//T/AAASAAAAAADF//X/AAASAAEAAADF//b/AAASAAIAAADF//f/AAASAAMAAADG//T/AAATAAAAAADG//X/AAATAAEAAADG//b/AAATAAIAAADG//f/AAATAAMAAADH//T/AAAUAAAAAADH//X/AAAUAAEAAADH//b/AAAUAAIAAADH//f/AAAUAAMAAADI//X/AAAVAAEAAADI//b/AAAVAAIAAADI//f/AAAVAAMAAADJ//b/AAAWAAIAAADJ//f/AAAWAAMAAADK//b/AAAXAAIAAADK//f/AAAXAAMAAADL//b/AAAYAAIAAADL//f/AAAYAAMAAADg/+//AAAXAAoAAADg/+7/AAAXAAkAAADc//D/AAAQAAoAAADd/+//AAAQAAoAAADd//D/AAARAAoAAADd//H/AAARAAsAAADe//D/AAARAAsAAADe/+7/AAAQAAoAAADe/+//AAARAAoAAADf/+//AAARAAsAAADY//r/AAAZAAUAAADc//j/AAAXAA4AAADb//j/AAAWAA4AAADa//T/AAADAAoAAADQ//7/AAAcAAIAADDQ//3/AAAcAAMAADDT//7/AAAJAAwAAADT//3/AAAJAAkAAADU//7/AAAJAAwAAADU//3/AAAYAAMAADDV//7/AAAJAAwAAADV//3/AAAHAAkAAADW//7/AAAWAAIAADDW//3/AAAIAAkAAADX////AAAVAAEAADDX//7/AAAVAAIAADDX//3/AAAJAAkAAADY/wAAAAAUAAAAADDY////AAAUAAEAADDY//7/AAAUAAIAADDY//3/AAAUAAMAADDZ/wAAAAATAAAAADDZ////AAATAAEAADDZ//7/AAATAAIAADDZ//3/AAATAAMAADDa/wAAAAASAAAAADDa////AAASAAEAADDa//7/AAASAAIAADDa//3/AAASAAMAADDb////AAARAAEAADDb//7/AAARAAIAADDb//3/AAARAAMAADDc//7/AAAQAAIAADDc//3/AAAQAAMAADDd//7/AAAPAAIAADDd//3/AAAPAAMAADDP//b/AAANAAIAAADP//f/AAANAAMAAADM//b/AAAGAAkAAADN//b/AAAHAAkAAADO//b/AAAIAAkAAADM//f/AAAUAAMAAADN//f/AAAEAAoAAADO//f/AAAUAAoAAADP//j/AAANAAQAAADN//j/AAAKAAMAAADN//n/AAAKAAQAAADO//r/AAAKAAwAAADO//n/AAAKAAsAAADP//n/AAALAAsAAADN//r/AAABAA4AAADO//j/AAAHAAsAAADc//X/AAAHAAsAAADc//T/AAAHAAsAAADd//T/AAAHAAsAAADe//T/AAAHAAsAAADd//L/AAAHAAsAAADe//L/AAAHAAsAAADf//L/AAAHAAsAAADf//H/AAAHAAsAAADf//D/AAAHAAsAAADe//H/AAAHAAsAAADS//H/AAAHAAsAAADR//D/AAAHAAsAAADR/+//AAAHAAsAAADT//P/AAAHAAsAAADU//P/AAAHAAsAAADV//P/AAAHAAsAAADW//P/AAAHAAsAAADX//P/AAAHAAsAAADY//P/AAAHAAsAAADZ//P/AAAHAAsAAADa//P/AAAHAAsAAADg//D/AAAXAAsAAADg//H/AAAXAAwAAADg//L/AAAXAAwAAADY//j/AAAZAAMAAADY//f/AAAZAAIAAADR//3/AAAHAAkAAADS//3/AAAIAAkAAADR//7/AAAJAAwAAADS//7/AAAJAAwAAAA=")
+tile_set = ExtResource("3_n3w6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1254677869]
